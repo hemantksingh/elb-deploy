@@ -14,6 +14,7 @@ WORKDIR /app
 RUN ["npm", "install"]
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
-COPY src/gulpfile.js /app/gulpfile.js
+COPY src/gulpfile.babel.js /app/gulpfile.babel.js
+COPY src/.babelrc /app/.babelrc
 
 ENTRYPOINT ["npm", "run", "deploy"]
