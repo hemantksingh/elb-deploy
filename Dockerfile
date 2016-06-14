@@ -15,6 +15,5 @@ RUN ["npm", "install"]
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 COPY src/gulpfile.js /app/gulpfile.js
-COPY src/env.yaml /app/env.yaml
 
 ENTRYPOINT ["npm", "run", "deploy"]
