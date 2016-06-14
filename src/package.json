@@ -1,0 +1,14 @@
+{
+  "name": "eb-deploy",
+  "description": "AWS ElasticBean deployer",
+  "version": "0.1.0",
+  "private": true,
+  "readme": "README.md",
+  "scripts": {
+   "deploy": "./node_modules/gulp/bin/gulp.js deploy"
+ },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "aws-sdk": "~2.3.19"
+  }
+}
