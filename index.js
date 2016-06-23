@@ -13,6 +13,15 @@ let eb = new AWS.ElasticBeanstalk({
 
 let bean = new ElasticBeanstalk(eb);
 
-bean.checkDNSAvailability({CNAMEPrefix: "smbc"})
-    .then(data => console.log(data))
-    .catch(error => console.log(error.message));
+let appName = "smbc-app",
+    appVersionLabel = "smbc-app-1",
+    environmentName = "smbc-env-1";
+
+bean.checkDNSAvailability({CNAMEPrefix: appName})
+    .then(data => bean.createApplication({
+          ApplicationName: appName,
+          Description: "Test application"
+        })
+      )
+      .then(data => console.log(data))
+      .catch(error => console.log(error.message));

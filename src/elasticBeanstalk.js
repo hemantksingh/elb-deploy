@@ -11,7 +11,16 @@ class ElasticBeanstalk {
         this.eb.checkDNSAvailability(detail, (err, data) => {
           if (err) reject(err);
           else resolve(data);
-        });
+        })
+    });
+  }
+
+  createApplication(appDetail) {
+    return new Promise((resolve, reject) => {
+        this.eb.createApplication(appDetail, (err, data) => {
+          if (err) reject(err);
+          else resolve(data);
+        })
     });
   }
 
