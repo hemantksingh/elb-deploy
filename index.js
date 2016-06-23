@@ -13,5 +13,6 @@ let eb = new AWS.ElasticBeanstalk({
 
 let bean = new ElasticBeanstalk(eb);
 
-bean.start()
-    .then(data => console.log(data));
+bean.checkDNSAvailability({CNAMEPrefix: "smbc"})
+    .then(data => console.log(data))
+    .catch(error => console.log(error.message));
