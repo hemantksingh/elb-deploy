@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+
 class ElasticBeanstalk {
 
   constructor(eb){
@@ -14,7 +16,9 @@ class ElasticBeanstalk {
   }
 
   start() {
-    console.log("Started.........");
+    return new Promise((resolve, reject) => {
+      resolve("Started..........");
+    });
   }
 
 }

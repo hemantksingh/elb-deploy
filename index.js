@@ -3,6 +3,7 @@
 import AWS from 'aws-sdk';
 import ElasticBeanstalk from './src/elasticBeanstalk.js';
 
+
 let eb = new AWS.ElasticBeanstalk({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -12,4 +13,5 @@ let eb = new AWS.ElasticBeanstalk({
 
 let bean = new ElasticBeanstalk(eb);
 
-bean.start();
+bean.start()
+    .then(data => console.log(data));

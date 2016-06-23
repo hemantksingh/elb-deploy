@@ -18,5 +18,8 @@
     "gulp-babel": "^6.1.1",
     "gulp-sourcemaps": "^1.6.0",
     "merge-stream": "^1.0.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.9.1"
   }
 }
