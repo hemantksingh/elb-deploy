@@ -9,12 +9,15 @@ RUN apt-get -qq update \
    	&& apt-get clean -y \
  	&& rm -rf /var/lib/apt/lists/
 
-COPY src/package.json /app/package.json
+COPY package.json /app/package.json
 WORKDIR /app
 RUN ["npm", "install"]
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
-COPY src/gulpfile.babel.js /app/gulpfile.babel.js
-COPY src/.babelrc /app/.babelrc
+COPY gulpfile.babel.js /app/gulpfile.babel.js
+COPY .babelrc /app/.babelrc
+COPY index.js /app/index.js
+COPY src /app/src
 
-ENTRYPOINT ["npm", "run", "deploy"]
+RUN ["npm", "run", "build"]
+ENTRYPOINT ["npm", "run", "start"]

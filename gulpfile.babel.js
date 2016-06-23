@@ -2,6 +2,28 @@ require('babel-core/register');
 
 import gulp from 'gulp';
 import AWS from 'aws-sdk';
+import babel from 'gulp-babel';
+import sourceMaps from 'gulp-sourcemaps';
+import merge from 'merge-stream';
+
+gulp.task('build', () => {
+
+    let index = gulp.src('index.js')
+        .pipe(sourceMaps.init())
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(sourceMaps.write('.'))
+        .pipe(gulp.dest('dist'));
+
+    let src = gulp.src('src/**/*', {base: '.'})
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(gulp.dest('dist'));
+
+    return merge(index, src);
+});
 
 gulp.task('deploy', () => {
 
