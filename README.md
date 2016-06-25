@@ -7,14 +7,14 @@ Create an AWS Elastic Beanstalk application environment and deploy to it using t
 
 ## Running the app
 
-Prerequisites: `docker` or `node`
+Prerequisites: **docker** or **node**
 
-For docker
+### With docker
 
 * make build
 * make run
 
-For node 
+### With node
 
 * npm install
 * npm run package
