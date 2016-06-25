@@ -17,7 +17,8 @@ RUN ln -s /usr/bin/nodejs /usr/bin/node
 COPY gulpfile.babel.js /app/gulpfile.babel.js
 COPY .babelrc /app/.babelrc
 COPY index.js /app/index.js
+COPY Dockerrun.aws.json /app/Dockerrun.aws.json
 COPY src /app/src
 
-RUN ["npm", "run", "build"]
+RUN ["npm", "run", "package"]
 ENTRYPOINT ["npm", "run", "start"]

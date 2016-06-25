@@ -5,7 +5,7 @@
   "private": true,
   "readme": "README.md",
   "scripts": {
-    "build": "./node_modules/gulp/bin/gulp.js build",
+    "package": "./node_modules/gulp/bin/gulp.js package",
     "start": "node ./dist/index.js",
     "deploy": "./node_modules/gulp/bin/gulp.js deploy"
   },
@@ -17,9 +17,13 @@
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.1",
     "gulp-sourcemaps": "^1.6.0",
-    "merge-stream": "^1.0.0"
+    "gulp-zip": "^3.2.0",
+    "merge-stream": "^1.0.0",
+    "rimraf": "^2.5.2",
+    "run-sequence": "^1.2.1"
   },
   "dependencies": {
-    "babel-polyfill": "^6.9.1"
+    "babel-polyfill": "^6.9.1",
+    "fs": "0.0.2"
   }
 }
