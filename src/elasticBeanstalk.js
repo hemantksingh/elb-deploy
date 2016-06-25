@@ -8,7 +8,7 @@ class ElasticBeanstalk {
         this.s3 = s3;
     }
 
-    checkDNSAvailability(detail) {
+    checkDnsAvailability(detail) {
         return new Promise((resolve, reject) => {
             this.eb.checkDNSAvailability(detail, (err, data) => {
                 if (err) reject(err);
@@ -29,6 +29,24 @@ class ElasticBeanstalk {
     updateApplicationVersion(appDetail) {
         return new Promise((resolve, reject) => {
             this.eb.updateApplicationVersion(appDetail, (err, data) => {
+                if (err) reject(err);
+                else resolve(data);
+            })
+        });
+    }
+
+    createApplicationVersion(appDetail) {
+        return new Promise((resolve, reject) => {
+            this.eb.createApplicationVersion(appDetail, (err, data) => {
+                if (err) reject(err);
+                else resolve(data);
+            })
+        });
+    }
+
+    updateEnvironment(detail){
+        return new Promise((resolve, reject) => {
+            this.eb.updateEnvironment(detail, (err, data) => {
                 if (err) reject(err);
                 else resolve(data);
             })
