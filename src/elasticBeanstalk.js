@@ -10,6 +10,7 @@ class ElasticBeanstalk {
 
     checkDnsAvailability(detail) {
         return new Promise((resolve, reject) => {
+            console.log("Checking DNS availability...");
             this.eb.checkDNSAvailability(detail, (err, data) => {
                 if (err) reject(err);
                 else resolve(data);
@@ -19,16 +20,8 @@ class ElasticBeanstalk {
 
     createApplication(appDetail) {
         return new Promise((resolve, reject) => {
+            console.log("Creating application...");
             this.eb.createApplication(appDetail, (err, data) => {
-                if (err) reject(err);
-                else resolve(data);
-            })
-        });
-    }
-
-    updateApplicationVersion(appDetail) {
-        return new Promise((resolve, reject) => {
-            this.eb.updateApplicationVersion(appDetail, (err, data) => {
                 if (err) reject(err);
                 else resolve(data);
             })
@@ -37,6 +30,7 @@ class ElasticBeanstalk {
 
     createApplicationVersion(appDetail) {
         return new Promise((resolve, reject) => {
+            console.log("Creating application version...");
             this.eb.createApplicationVersion(appDetail, (err, data) => {
                 if (err) reject(err);
                 else resolve(data);
@@ -44,9 +38,10 @@ class ElasticBeanstalk {
         });
     }
 
-    updateEnvironment(detail){
+    createEnvironment(detail) {
         return new Promise((resolve, reject) => {
-            this.eb.updateEnvironment(detail, (err, data) => {
+            console.log("Creating environment...");
+            this.eb.createEnvironment(detail, (err, data) => {
                 if (err) reject(err);
                 else resolve(data);
             })
@@ -55,6 +50,7 @@ class ElasticBeanstalk {
 
     uploadApplication(appDetail) {
         return new Promise((resolve, reject) => {
+            console.log("Uploading application...");
             fs.readFile(appDetail.fileName, (err, data) => {
                 if (err) throw err;
 

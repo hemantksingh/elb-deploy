@@ -2,6 +2,7 @@
 
 import AWS from 'aws-sdk';
 import ElasticBeanstalk from './src/elasticBeanstalk.js';
+import ElbInfra from './src/elbInfra.js';
 
 let eb = new AWS.ElasticBeanstalk({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -10,33 +11,24 @@ let eb = new AWS.ElasticBeanstalk({
     apiVersion: '2010-12-01'
 });
 
-let bean = new ElasticBeanstalk(eb, new AWS.S3());
+let elbInfra = new ElbInfra(new ElasticBeanstalk(eb, new AWS.S3()));
 
-let appName = "odetofood",
-    appDescription = "Ode to food",
-    appVersionLabel = "v1.0.6",
-    environmentName = "odetofood";
+elbInfra.deployApplication({
+    appName: "odetofood",
+    appDescription: "Ode to food",
+    appVersionLabel: "v1.0.7",
+    environmentName: "odetofood"
+    });
 
-//TODO AutoGenerate S3 bucket key.
-bean.uploadApplication({
-    fileName: `${__dirname}/output.zip`,
-    bucket: "elasticbeanstalk-us-west-2-514467551670",
-    key: "2016162Erg-odetofood-aws.zip"
-})
-    .then(data => bean.createApplicationVersion({
-        ApplicationName: appName,
-        AutoCreateApplication: false,
-        Description: appDescription,
-        Process: true,
-        SourceBundle: {
-            S3Bucket: data.Bucket,
-            S3Key: data.Key
-        },
-        VersionLabel: appVersionLabel
-    }))
-    .then(data => bean.updateEnvironment({
-        EnvironmentName: environmentName,
-        VersionLabel: data.ApplicationVersion.VersionLabel
-    }))
-    .then(data => console.log(data))
-    .catch(error => console.log(error));
+/*
+ TODO: Fix creating environment
+ http://stackoverflow.com/questions/30140462/launchwaitcondition-failed-the-expected-number-of-ec2-instances-were-not-initia
+
+elbInfra.createEnvironment({
+    appName: "odetofoodtest",
+    appDescription: "Testing application and environment creation",
+    appVersionLabel: "v1.0.0",
+    environmentName: "odetofoodtest-env"
+    });
+*/
+
