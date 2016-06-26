@@ -20,15 +20,14 @@ elbInfra.deployApplication({
     environmentName: "odetofood"
     });
 
-/*
- TODO: Fix creating environment
+ /*TODO: Fix creating environment
  http://stackoverflow.com/questions/30140462/launchwaitcondition-failed-the-expected-number-of-ec2-instances-were-not-initia
-
+*/
 elbInfra.createEnvironment({
-    appName: "odetofoodtest",
+    appName: "testapp",
     appDescription: "Testing application and environment creation",
     appVersionLabel: "v1.0.0",
-    environmentName: "odetofoodtest-env"
+    environmentName: "odetofoodtest-env",
+    solutionStackName: "64bit Amazon Linux 2016.03 v2.1.1 running Multi-container Docker 1.9.1 (Generic)"
     });
-*/
 

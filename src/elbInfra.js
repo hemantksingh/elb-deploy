@@ -68,7 +68,7 @@ class ElbInfra {
                 ApplicationName: detail.appName,
                 CNAMEPrefix: detail.appName,
                 EnvironmentName: detail.environmentName,
-                SolutionStackName: "64bit Amazon Linux 2016.03 v2.1.1 running Multi-container Docker 1.9.1 (Generic)",
+                SolutionStackName: detail.solutionStackName,
                 VersionLabel: detail.appVersionLabel
             }))
             .then(data => console.log(data))
