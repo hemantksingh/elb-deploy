@@ -7,11 +7,13 @@ class ElbInfra {
     /**
      * Deploys an application to an existing environment.
      * @param detail
+     * S3 is used to store the source copy of your application version,
+     * so that if you need to scale-up, the new EC2 instance pulls a copy from S3.
      * TODO: AutoGenerate S3 bucket key.
      */
     deployApplication(detail) {
         this.bean.uploadApplication({
-            fileName: `${__dirname}/../output.zip`,
+            fileName: detail.fileName,
             bucket: "elasticbeanstalk-us-west-2-514467551670",
             key: "2016162Erg-odetofood-aws.zip"
         })

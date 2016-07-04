@@ -14,10 +14,11 @@ let eb = new AWS.ElasticBeanstalk({
 let elbInfra = new ElbInfra(new ElasticBeanstalk(eb, new AWS.S3()));
 
 elbInfra.deployApplication({
-    appName: "odetofood",
-    appDescription: "Ode to food",
-    appVersionLabel: "v1.0.7",
-    environmentName: "odetofood"
+        appName: "odetofood",
+        appDescription: "Ode to food",
+        appVersionLabel: "v1.0.7",
+        environmentName: "odetofood",
+        fileName: `${__dirname}/output.zip`
     });
 
  /*TODO: Fix creating environment
